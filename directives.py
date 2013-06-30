@@ -52,7 +52,7 @@ class Pygments(Directive):
         # Construct cache filename
         cache_file = None
         content_text = u'\n'.join(self.content)
-        cache_file_name = '%s-%s.html' % (lexer_name, hashlib.md5(content_text).hexdigest())
+        cache_file_name = '%s-%s.html' % (lexer_name, hashlib.md5(content_text.encode('utf-8')).hexdigest())
         cached_path = os.path.join(PYGMENTS_CACHE_DIR, cache_file_name)
 
         # Look for cached version, otherwise parse
